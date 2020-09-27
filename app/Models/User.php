@@ -38,7 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function lists() {
+    public function tasklists() {
         return $this->belongsToMany(TaskList::class);
     }
 }
