@@ -14,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::post('/users', function (Request $request) {
+    $persons = [
+        ['name' => 'test1', ],
+        ['name' => 'test2', ],
+    ];
+    array_push($persons, ["name" => $request->input('name')]);
+    return $request;
+});
+Route::get('/users', function (Request $request) {
+    return [['user' => '1'], ['user' => '2']];
+});
+
+Route::post('/login', 'App\Http\Controllers\Api\LoginController@login');
+
+Route::group(['prefix' => 'tasklists'], function () {
+    return [
+        Route::middleware('auth:api')->get('/', 'App\Http\Controllers\TaskListController@get'),
+        Route::middleware('auth:api')->post('/', 'App\Http\Controllers\TaskListController@create'),
+    ];
 });
