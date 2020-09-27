@@ -17,4 +17,8 @@ class TaskList extends Model
     protected $fillable = [
         'name', 'finished', 'style', 'archived'
     ];
+
+    public function user() {
+        return $this->belongsToMany(User::class);
+    }
 }
