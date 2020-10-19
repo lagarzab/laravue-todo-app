@@ -44,4 +44,14 @@ return [
         'encrypt_cookies' => App\Http\Middleware\EncryptCookies::class,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Sanctum Prefix
+    |--------------------------------------------------------------------------
+    |
+    | Allow the csrf cookie to be retrieved from the same base api endpoint
+    |
+    */
+
+    'prefix' => 'api',
 ];
